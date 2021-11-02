@@ -10,6 +10,12 @@ public class CRepositorioAlumno{
     CAlumno alumno1 = new CAlumno("0000","luis",30);
     Alumnos.Add(alumno1);
   }
+  //INDEXER
+  public CAlumno this[int indice]{
+    get{return Alumnos[indice]; }
+    // set{Alumnos[indice] = value; }
+  }
+  
   //BUSCAR PERSONA
   public int BuscarPersona(string pCodigo){
     int posicion = -1;

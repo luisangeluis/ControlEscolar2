@@ -3,6 +3,8 @@ public class CPerson{
   public string Codigo {set;get;}
   public string Nombre{set;get;}
   public int Edad{set;get;}
+
+  
   
   public CPerson(string pCodigo,string pNombre,int pEdad){
     Codigo = pCodigo;
