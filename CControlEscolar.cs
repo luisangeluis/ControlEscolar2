@@ -62,7 +62,7 @@ public class CControlEscolar{
   public bool AgregarAlumno(){
     int posicion = -1;
     string codigo="";
-    string nombre="";
+    string nombre="" ;
     int edad =0;
     bool alumnoAgregado=false;
     CAlumno alumno =null;
