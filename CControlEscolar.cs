@@ -39,11 +39,39 @@ public class CControlEscolar{
           else
             Console.WriteLine("alumno ya existe");
         }
+        if(opcionAlumnos==3){
+          if(BorrarAlumno())
+            Console.WriteLine("Alumno borrado");
+          else
+            Console.WriteLine("Alumno no encontrado");
+
+        }
+        if(opcionAlumnos==4){
+          if(ModificarAlumno())
+            Console.WriteLine("Alumno modificado");
+          else
+            Console.WriteLine("Alumno no modificado");
+
+        }
+        
       break;
       case 2:
       break;
+      
+      default: break;
     }
     
+  }
+  //MENU PRINCIPAL ALUMNOS
+  public void MainMenuAlumnos(){
+
+    Console.WriteLine("Menu alumnos");
+    Console.WriteLine("1.- Uno para buscar alumno");
+    Console.WriteLine("2.- Dos agregar alumno");
+    Console.WriteLine("3.- Tres para borrar alumno");
+    Console.WriteLine("4.- Cuatro para modificar alumno");
+    Console.WriteLine("5.- Cinco para salir");
+
   }
   //BUSCAR PERSONA
   public void BuscarAlumno(){
@@ -87,15 +115,37 @@ public class CControlEscolar{
     }  
     return alumnoAgregado;
   }
-  //MENU PRINCIPAL
-  public void MainMenuAlumnos(){
+  //Metodo para borrar alumno
 
-    Console.WriteLine("Menu alumnos");
-    Console.WriteLine("1.- Uno para buscar alumno");
-    Console.WriteLine("2.- Dos agregar alumno");
-    Console.WriteLine("3.- Tres para borrar alumno");
-    Console.WriteLine("4.- Cuatro para modificar alumno");
-    Console.WriteLine("5.- Cinco para salir");
+  public bool BorrarAlumno(){
+    bool borrarAlumno = false;
+    string codigo ="";
+    
+    try{
+      Console.WriteLine("Ingrese el codigo del alumno");
+      codigo = Console.ReadLine();
 
+      borrarAlumno = Alumnos.EliminarPersona(codigo);
+    }catch(Exception e){
+
+    }
+    
+    return borrarAlumno;
   }
+  //Modificar alumno
+  public bool ModificarAlumno(){
+    bool modificarAlumno = true;
+    string codigo ="";
+    try{
+      Console.WriteLine("Ingrese codigo del alumno");
+      codigo = Console.ReadLine();
+
+      modificarAlumno = Alumnos.ModificarPersona(codigo);
+    }catch(Exception e){
+
+    }
+    
+    return modificarAlumno;
+  }
+  
 }
