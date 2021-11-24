@@ -15,7 +15,13 @@ public class CRepositorioAlumno{
     get{return Alumnos[indice]; }
     // set{Alumnos[indice] = value; }
   }
-  
+  //MOSTRAR Alumnos
+  public void MostrarAlumnos(){
+    if(Alumnos!=null){
+      foreach(CAlumno a in Alumnos)
+        Console.WriteLine(a);
+    }
+  }
   //BUSCAR PERSONA
   public int BuscarPersona(string pCodigo){
     int posicion = -1;

@@ -5,6 +5,9 @@ public class CAlumno:CPerson{
 
   }
   
+  // public override string ToString(){
+  //   return string.Format("");
+  // }
 
 
 }

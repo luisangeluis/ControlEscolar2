@@ -10,58 +10,66 @@ public class CControlEscolar{
   // }
   public void MainMenu(){
 
-    string opcion = "";
-    int valor = 0;
+    while(true){
+
+      string opcion = "";
+      int valor = 0;
     
-    Console.WriteLine("Control Escolar");
-    Console.WriteLine("1.-Uno para alumnos");
-    Console.WriteLine("2.-Dos para maestros");
-    Console.WriteLine("3.- Tres para salir");
+      Console.WriteLine("Control Escolar");
+      Console.WriteLine("1.-Uno para alumnos");
+      Console.WriteLine("2.-Dos para maestros");
+      Console.WriteLine("3.- Tres para salir");
     
-    Console.WriteLine("Ingrese una opcion");
-    opcion = Console.ReadLine();
-    valor = Convert.ToInt32(opcion);
+      Console.WriteLine("Ingrese una opcion");
+      opcion = Console.ReadLine();
+      valor = Convert.ToInt32(opcion);
 
-    switch(valor){
-      case 1:
-        int opcionAlumnos = 0;
+      switch(valor){
+        case 1:
+          int opcionAlumnos = 0;
         
-        MainMenuAlumnos();
-        opcionAlumnos = Convert.ToInt32(Console.ReadLine());
+          MainMenuAlumnos();
+          opcionAlumnos = Convert.ToInt32(Console.ReadLine());
 
-        if(opcionAlumnos == 1)
-          BuscarAlumno();
+          if(opcionAlumnos == 1)
+            BuscarAlumno();
 
-        if(opcionAlumnos == 2){
+          if(opcionAlumnos == 2){
 
-          if(AgregarAlumno())
-            Console.WriteLine("alumno agregado");
-          else
-            Console.WriteLine("alumno ya existe");
-        }
-        if(opcionAlumnos==3){
-          if(BorrarAlumno())
-            Console.WriteLine("Alumno borrado");
-          else
-            Console.WriteLine("Alumno no encontrado");
+            if(AgregarAlumno())
+              Console.WriteLine("alumno agregado");
+            else
+              Console.WriteLine("alumno ya existe");
+          }
+          if(opcionAlumnos==3){
+            if(BorrarAlumno())
+              Console.WriteLine("Alumno borrado");
+            else
+              Console.WriteLine("Alumno no encontrado");
 
-        }
-        if(opcionAlumnos==4){
-          if(ModificarAlumno())
-            Console.WriteLine("Alumno modificado");
-          else
-            Console.WriteLine("Alumno no modificado");
+          } 
+          if(opcionAlumnos==4){
+            if(ModificarAlumno())
+              Console.WriteLine("Alumno modificado");
+            else
+              Console.WriteLine("Alumno no modificado");
 
-        }
+          }
+          if(opcionAlumnos==5){
+            MostrarPersonas();
+          }
         
-      break;
-      case 2:
-      break;
+        break;
+        case 2:
+        break;
+      }
       
-      default: break;
+      Console.WriteLine("Desea continuar s para si n para n");
+      if(Console.ReadLine() == "n")
+        break;
     }
-    
   }
+    
   //MENU PRINCIPAL ALUMNOS
   public void MainMenuAlumnos(){
 
@@ -70,8 +78,13 @@ public class CControlEscolar{
     Console.WriteLine("2.- Dos agregar alumno");
     Console.WriteLine("3.- Tres para borrar alumno");
     Console.WriteLine("4.- Cuatro para modificar alumno");
+    Console.WriteLine("5.- Cinco para ver alumnos");
     Console.WriteLine("5.- Cinco para salir");
 
+  }
+  //MOSTRAR PERSONA
+  public void MostrarPersonas(){
+    Alumnos.MostrarAlumnos();
   }
   //BUSCAR PERSONA
   public void BuscarAlumno(){
@@ -85,6 +98,8 @@ public class CControlEscolar{
 
     if(posicion >= 0)
       Console.WriteLine(Alumnos[posicion]);
+    else
+      Console.WriteLine("Alumno no existe");
   }
   //AGREGAR ALUMNO
   public bool AgregarAlumno(){
