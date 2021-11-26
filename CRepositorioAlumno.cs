@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class CRepositorioAlumno{
+public class CRepositorioAlumno:IRepositorio{
 
   private List<CAlumno> Alumnos = null;
   
@@ -16,7 +16,7 @@ public class CRepositorioAlumno{
     // set{Alumnos[indice] = value; }
   }
   //MOSTRAR Alumnos
-  public void MostrarAlumnos(){
+  public void MostrarPersonas(){
     if(Alumnos!=null){
       foreach(CAlumno a in Alumnos)
         Console.WriteLine(a);
@@ -34,6 +34,8 @@ public class CRepositorioAlumno{
     }
 
     return posicion;
+
+
   }
   //AGREGAR PERSONA
   public bool AgregarPersona(CAlumno pAlumno){
@@ -99,4 +101,16 @@ public class CRepositorioAlumno{
     }
     return false;
   }
+  public void BuscarPersonaByCodigo(string pCodigo){
+    int posicion = BuscarPersona(pCodigo);
+    
+    if(posicion>=0){
+      Console.WriteLine(Alumnos[posicion]);
+    }else
+      Console.WriteLine("Codigo no existe");
+
+  }
+  
+
+
 }

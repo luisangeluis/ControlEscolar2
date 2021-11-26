@@ -3,7 +3,7 @@ using System;
 
 public class CControlEscolar{
 
- CRepositorioAlumno Alumnos = new CRepositorioAlumno();
+  IRepositorio Personas = new CRepositorioAlumno();
   
   // public void GetAlumnoByIndice(int pIndice){
   //   Console.WriteLine(Alumnos[pIndice]);
@@ -24,35 +24,37 @@ public class CControlEscolar{
       opcion = Console.ReadLine();
       valor = Convert.ToInt32(opcion);
 
+
       switch(valor){
         case 1:
+
           int opcionAlumnos = 0;
         
           MainMenuAlumnos();
           opcionAlumnos = Convert.ToInt32(Console.ReadLine());
 
           if(opcionAlumnos == 1)
-            BuscarAlumno();
+            BuscarPersonaByCodigo();
 
           if(opcionAlumnos == 2){
 
-            if(AgregarAlumno())
-              Console.WriteLine("alumno agregado");
+            if(AgregarPersona())
+              Console.WriteLine("Persona agregada");
             else
-              Console.WriteLine("alumno ya existe");
+              Console.WriteLine("Persona ya existe");
           }
           if(opcionAlumnos==3){
-            if(BorrarAlumno())
-              Console.WriteLine("Alumno borrado");
+            if(BorrarPersona())
+              Console.WriteLine("Persona borrada");
             else
-              Console.WriteLine("Alumno no encontrado");
+              Console.WriteLine("Persona no encontrada");
 
           } 
           if(opcionAlumnos==4){
-            if(ModificarAlumno())
-              Console.WriteLine("Alumno modificado");
+            if(ModificarPersona())
+              Console.WriteLine("Persona modificada");
             else
-              Console.WriteLine("Alumno no modificado");
+              Console.WriteLine("Persona no modificado");
 
           }
           if(opcionAlumnos==5){
@@ -61,6 +63,7 @@ public class CControlEscolar{
         
         break;
         case 2:
+        Personas = new CRepositorioMaestros();
         break;
       }
       
@@ -79,35 +82,48 @@ public class CControlEscolar{
     Console.WriteLine("3.- Tres para borrar alumno");
     Console.WriteLine("4.- Cuatro para modificar alumno");
     Console.WriteLine("5.- Cinco para ver alumnos");
-    Console.WriteLine("5.- Cinco para salir");
+    Console.WriteLine("6.- Seis para salir");
 
   }
   //MOSTRAR PERSONA
   public void MostrarPersonas(){
-    Alumnos.MostrarAlumnos();
+    Personas.MostrarPersonas();
   }
   //BUSCAR PERSONA
-  public void BuscarAlumno(){
-    int posicion = -1;
+  /*
+  public void BuscarPersona(){
+    //int posicion = -1;
     string codigo ="";
 
-    Console.WriteLine("Ingrese codigo del alumno");
+    Console.WriteLine("Ingrese codigo de la persona");
     codigo = Console.ReadLine();
 
-    posicion = Alumnos.BuscarPersona(codigo);
-
+    //posicion = Personas.BuscarPersona(codigo);
+    Personas.BuscarPersona(codigo);
+    /*
     if(posicion >= 0)
-      Console.WriteLine(Alumnos[posicion]);
+      Console.WriteLine(Personas[posicion]);
     else
-      Console.WriteLine("Alumno no existe");
+      Console.WriteLine("Persona no existe");
+    
+  }*/
+
+  //Buscar persona por codigo
+  public void BuscarPersonaByCodigo(){
+    string codigo;
+    Console.WriteLine("Ingrese el codigo de la persona");
+    codigo = Console.ReadLine();
+
+    Personas.BuscarPersonaByCodigo(codigo);
   }
+
   //AGREGAR ALUMNO
-  public bool AgregarAlumno(){
-    int posicion = -1;
+  public bool AgregarPersona(){
+    //int posicion = -1;
     string codigo="";
     string nombre="" ;
     int edad =0;
-    bool alumnoAgregado=false;
+    bool PersonaAgregada=false;
     CAlumno alumno =null;
 
     try{
@@ -126,41 +142,41 @@ public class CControlEscolar{
     }
 
     if(alumno !=null){
-      alumnoAgregado = Alumnos.AgregarPersona(alumno);
+      PersonaAgregada = Personas.AgregarPersona(alumno);
     }  
-    return alumnoAgregado;
+    return PersonaAgregada;
   }
   //Metodo para borrar alumno
 
-  public bool BorrarAlumno(){
-    bool borrarAlumno = false;
+  public bool BorrarPersona(){
+    bool borrarPersona = false;
     string codigo ="";
     
     try{
-      Console.WriteLine("Ingrese el codigo del alumno");
+      Console.WriteLine("Ingrese el codigo de la Persona");
       codigo = Console.ReadLine();
 
-      borrarAlumno = Alumnos.EliminarPersona(codigo);
+      borrarPersona = Personas.EliminarPersona(codigo);
     }catch(Exception e){
 
     }
     
-    return borrarAlumno;
+    return borrarPersona;
   }
   //Modificar alumno
-  public bool ModificarAlumno(){
-    bool modificarAlumno = true;
+  public bool ModificarPersona(){
+    bool modificarPersona = true;
     string codigo ="";
     try{
-      Console.WriteLine("Ingrese codigo del alumno");
+      Console.WriteLine("Ingrese codigo de la persona");
       codigo = Console.ReadLine();
 
-      modificarAlumno = Alumnos.ModificarPersona(codigo);
+      modificarPersona = Personas.ModificarPersona(codigo);
     }catch(Exception e){
 
     }
     
-    return modificarAlumno;
+    return modificarPersona;
   }
   
 }
