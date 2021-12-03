@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 public class CPerson{
   
   public string Codigo {set;get;}
   public string Nombre{set;get;}
   public int Edad{set;get;}
 
-  
+  private List<int> MisMates = new List<int>();  
   
   public CPerson(string pCodigo,string pNombre,int pEdad){
     Codigo = pCodigo;

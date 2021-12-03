@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class CRepositorioAlumno:IRepositorio{
 
   private List<CAlumno> Alumnos = null;
+  private CMatesDisponibles matesDisponibles = new CMatesDisponibles();
   
   public CRepositorioAlumno(){
     Alumnos = new List<CAlumno>();
@@ -111,6 +112,15 @@ public class CRepositorioAlumno:IRepositorio{
 
   }
   
+  public bool ModificarMateria(string pCodigo){
+    int posicion = BuscarPersona(pCodigo);
 
+    if(posicion>=0){
+      
+        
+      return true;
+    }
+    return false;
+  }
 
 }

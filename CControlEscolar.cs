@@ -23,8 +23,7 @@ public class CControlEscolar{
       Console.WriteLine("Ingrese una opcion");
       opcion = Console.ReadLine();
       valor = Convert.ToInt32(opcion);
-
-
+  
       switch(valor){
         case 1:
 
