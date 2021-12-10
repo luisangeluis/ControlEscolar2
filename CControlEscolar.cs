@@ -4,6 +4,7 @@ using System;
 public class CControlEscolar{
 
   IRepositorio Personas = new CRepositorioAlumno();
+  CMatesDisponibles matesDisponibles = new CMatesDisponibles();
   
   // public void GetAlumnoByIndice(int pIndice){
   //   Console.WriteLine(Alumnos[pIndice]);
