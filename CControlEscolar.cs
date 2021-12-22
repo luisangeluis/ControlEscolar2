@@ -6,9 +6,6 @@ public class CControlEscolar{
   IRepositorio Personas = new CRepositorioAlumno();
   CMatesDisponibles matesDisponibles = new CMatesDisponibles();
   
-  // public void GetAlumnoByIndice(int pIndice){
-  //   Console.WriteLine(Alumnos[pIndice]);
-  // }
   public void MainMenu(){
 
     while(true){
@@ -19,6 +16,7 @@ public class CControlEscolar{
       Console.WriteLine("Control Escolar");
       Console.WriteLine("1.-Uno para alumnos");
       Console.WriteLine("2.-Dos para maestros");
+      Console.WriteLine("3.-TRES PARA REGISTROS");
       Console.WriteLine("3.- Tres para salir");
     
       Console.WriteLine("Ingrese una opcion");
@@ -65,6 +63,17 @@ public class CControlEscolar{
         case 2:
         Personas = new CRepositorioMaestros();
         break;
+
+        case 3:
+          int opcionRegistros = 0;
+          MainMenuRegistros();
+          opcionRegistros = Convert.ToInt32(Console.ReadLine());
+
+          if(opcionRegistros==1){
+            MainMenuMaterias();
+            
+          }
+        break;
       }
       
       Console.WriteLine("Desea continuar s para si n para n");
@@ -85,29 +94,51 @@ public class CControlEscolar{
     Console.WriteLine("6.- Seis para salir");
 
   }
+  //MENU PRINCIPAL REGISTROS
+  public void MainMenuRegistros(){
+    Console.WriteLine("Menu Registros");
+    Console.WriteLine("1.- Uno para materias");
+    Console.WriteLine("2.- Dos para aulas");
+    Console.WriteLine("3.- Tres para salir");
+  }
+  //MENU GESTION MATERIAS DISPONIBLES 
+  public void MainMenuMaterias(){
+    int opcion =0;
+    
+    Console.WriteLine("Menu materias");
+    Console.WriteLine("1.- Uno para agregar materia");
+    Console.WriteLine("2.- Dos para eliminar materia");
+    Console.WriteLine("3.- Tres para modificar materia");
+    Console.WriteLine("4.- Cuatro para salir");
+
+    opcion = Convert.ToInt32(Console.ReadLine());
+
+    switch(opcion){
+      case 1:
+        string codigo="";
+        string nombre ="";
+
+        Console.WriteLine("Ingrese el codigo de la materia");
+        codigo = Console.ReadLine();
+        Console.WriteLine("Ingrese el nombre de la materia");
+        nombre = Console.ReadLine();
+
+        CMateria materia = new CMateria(codigo,nombre);
+
+        if(matesDisponibles.AgregarMateria(materia))
+          Console.WriteLine("Materia agregada");
+        else
+          Console.WriteLine("Materia ya existente");
+
+        
+      break;
+    }
+    
+  }
   //MOSTRAR PERSONA
   public void MostrarPersonas(){
     Personas.MostrarPersonas();
   }
-  //BUSCAR PERSONA
-  /*
-  public void BuscarPersona(){
-    //int posicion = -1;
-    string codigo ="";
-
-    Console.WriteLine("Ingrese codigo de la persona");
-    codigo = Console.ReadLine();
-
-    //posicion = Personas.BuscarPersona(codigo);
-    Personas.BuscarPersona(codigo);
-    /*
-    if(posicion >= 0)
-      Console.WriteLine(Personas[posicion]);
-    else
-      Console.WriteLine("Persona no existe");
-    
-  }*/
-
   //Buscar persona por codigo
   public void BuscarPersonaByCodigo(){
     string codigo;

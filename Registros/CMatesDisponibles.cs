@@ -34,7 +34,7 @@ public class CMatesDisponibles{
 
   public bool AgregarMateria(CMateria pMateria){
     int encontrar = BuscarMateria(pMateria.Codigo);
-
+    
     if(encontrar>=0){
       return false;
     }
